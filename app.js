@@ -4,21 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
 
 require('dotenv').config();
 
 var app = express();
 
 require('./dbConfig').connect();
-// PRUEBA DE CONEXION:
-db.query('select * from empleados', (err, rows) => {
-  if (err) {
-    console.log(error);
-  }
-  console.log(rows);
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,8 +22,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// RUTAS
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
