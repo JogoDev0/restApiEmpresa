@@ -1,0 +1,59 @@
+# EMPLEADOS
+
+# getAll
+GET http://localhost:3000/api/empleados
+
+###
+# getById
+GET http://localhost:3000/api/empleados/1
+
+###
+# create
+POST http://localhost:3000/api/empleados/new
+Content-Type: application/json
+
+{
+    "nombre": "Luisa",
+    "dni": "12345678Z",
+    "sexo": "F",
+    "fecha_nac": "1978-10-31",
+    "salario": 5000.00,
+    "cargo": "Jefaza",
+    "fk_departamento": 2,
+    "jefe_id":null
+}
+
+###
+
+
+
+
+
+
+#Petición para eliminar un registro de la BBDD
+DELETE http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+    "id": 24
+}
+
+###
+
+#Petición para actualizar un registro
+PUT http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+ {
+    "id": 25,
+    "nombre": "Luisa_edit",
+    "apellidos": "García",
+    "edad": 37,
+    "sexo": "f",
+    "matricula": "112764",
+    "email": "lg@gmail.com",
+    "telefono": 123689,
+    "fecha_alta": "2020-08-27T08:21:22.000Z",
+    "fk_sede": 2
+  }
+

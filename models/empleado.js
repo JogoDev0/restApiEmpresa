@@ -23,4 +23,15 @@ const getById = (idEmpleado) => {
     });
 };
 
-module.exports = { getAll, getById };
+const create = ({ nombre, dni, sexo, fecha_nac, fecha_inc, salario, cargo, fk_departamento, jefe_id }) => {
+    return new Promise((resolve, reject) => {
+        db.query('INSERT INTO empleados (nombre, dni, sexo, fecha_nac, fecha_inc, salario, cargo, fk_departamento, jefe_id) VALUES (?,?,?,?,?,?,?,?,?)', [nombre, dni, sexo, fecha_nac, fecha_inc, salario, cargo, fk_departamento, jefe_id], (err, result) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(result);
+        });
+    });
+}
+
+module.exports = { getAll, getById, create };
