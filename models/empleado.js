@@ -34,4 +34,26 @@ const create = ({ nombre, dni, sexo, fecha_nac, fecha_inc, salario, cargo, fk_de
     });
 }
 
-module.exports = { getAll, getById, create };
+const update = ({ nombre, dni, sexo, fecha_nac, fecha_inc, salario, cargo, fk_departamento, jefe_id, id }) => {
+    return new Promise((resolve, reject) => {
+        db.query('UPDATE empleados SET nombre=?, dni=?, sexo=?, fecha_nac=?, fecha_inc=?, salario=?, cargo=?, fk_departamento=?, jefe_id=? WHERE id=?', [nombre, dni, sexo, fecha_nac, fecha_inc, salario, cargo, fk_departamento, jefe_id, id], (err, result) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(result);
+        });
+    });
+}
+
+const remove = (id) => {
+    return new Promise((resolve, reject) => {
+        db.query('DELETE FROM empleados WHERE id=?', [id], (err, result) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(result);
+        });
+    });
+};
+
+module.exports = { getAll, getById, create, update, remove };

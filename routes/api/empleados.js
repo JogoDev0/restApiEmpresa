@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { check, validationResult } = require('express-validator');
 
-const { getAll, getById, create } = require('../../models/empleado');
+const { getAll, getById, create, update, remove } = require('../../models/empleado');
 
 router.get('/', async (req, res) => {
     try {
@@ -68,6 +68,36 @@ router.post('/new', [
         res.status(500).json({ ERROR: err.message });
     }
 });
+
+router.put('/', async (req, res) => {
+    try {
+        const result = await update(req.body);
+        if (result.affectedRows === 1) {
+            res.json({ SUCCESS: 'Se ha editado el empleado correctamente' });
+        } else {
+            res.status(422).json({ ERROR: 'No se ha podido actualizar el empleado' });
+        }
+
+    }
+    catch (err) {
+        res.status(500).json({ ERROR: err.message });
+    }
+});
+
+router.delete('/', async (req, res) => {
+    try {
+        const result = await remove(req.body.id);
+        if (result.affectedRows === 1) {
+            res.json({ SUCCESS: 'Se ha borrado el empleado correctamente' });
+        } else {
+            res.status(422).json({ ERROR: 'No se ha podido borrar el empleado. Por favor, comprueba que el id sea correcto' });
+        }
+    }
+    catch (err) {
+        res.status(500).json({ ERROR: err.message });
+    }
+});
+
 
 
 // HELPERS
