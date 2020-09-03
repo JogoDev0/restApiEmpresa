@@ -10,8 +10,6 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json({ ERROR: err.message });
     }
-
-
 });
 
 router.get('/:idEmpleado', async (req, res) => {
@@ -77,7 +75,6 @@ router.put('/', async (req, res) => {
         } else {
             res.status(422).json({ ERROR: 'No se ha podido actualizar el empleado' });
         }
-
     }
     catch (err) {
         res.status(500).json({ ERROR: err.message });

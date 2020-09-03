@@ -1,4 +1,6 @@
-# EMPLEADOS
+#################
+### EMPLEADOS ###
+#################
 
 # getAll
 GET http://localhost:3000/api/empleados
@@ -42,7 +44,6 @@ Content-Type: application/json
 
 
 ###
-
 # delete
 DELETE http://localhost:3000/api/empleados
 Content-Type: application/json
@@ -51,4 +52,44 @@ Content-Type: application/json
     "id": 31
 }
 
+#####################
+### DEPARTAMENTOS ###
+#####################
+
+
+# getAll
+GET http://localhost:3000/api/departamentos
+
 ###
+# getById
+GET http://localhost:3000/api/departamentos/5
+
+###
+# create
+POST http://localhost:3000/api/departamentos/new
+Content-Type: application/json
+
+{
+    "nombre": "Desarrollo",
+    "ciudad": "Malaga"
+}
+
+###
+# update
+PUT http://localhost:3000/api/departamentos
+Content-Type: application/json
+
+{
+    "id": 7,
+    "nombre": "Desarrollo2",
+    "ciudad": "Almeria"
+}
+
+###
+# delete
+DELETE http://localhost:3000/api/departamentos
+Content-Type: application/json
+
+{
+    "id": 7
+}
